@@ -1,10 +1,7 @@
 const knex = require('knex');
 const configuration = require('../../knexfile');
 
-let connection = knex(configuration.development);
-
-
-let dbConnectionConfig;
+let connection;
 
 switch (process.env.NODE_ENV){
   case 'production':
@@ -13,8 +10,5 @@ switch (process.env.NODE_ENV){
   default:
     connection = knex(configuration.development);
 }
-
-//const appDb = connectToDb(connection)
-//Model.knex(appDb)
 
 module.exports = connection;
